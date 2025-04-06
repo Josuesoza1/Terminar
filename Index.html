@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>¿Terminamos?</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+    }
+    .contenedor {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    p {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+    }
+    button {
+      padding: 1rem 2rem;
+      margin: 0 1rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      outline: none;
+    }
+    #yesBtn {
+      background-color: #4caf50;
+      color: white;
+    }
+    #yesBtn:hover {
+      background-color: #45a049;
+    }
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: relative;
+    }
+    #noBtn:hover {
+      background-color: #e53935;
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #fff;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <p>¿Tú me quieres terminar?</p>
+    <button id="yesBtn">Sí</button>
+    <button id="noBtn">No</button>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const message = document.getElementById('message');
+
+    // Movimiento aleatorio del botón "No"
+    noBtn.addEventListener('mouseover', () => {
+      const randomX = Math.floor(Math.random() * (window.innerWidth - 100));
+      const randomY = Math.floor(Math.random() * (window.innerHeight - 50));
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${randomX}px`;
+      noBtn.style.top = `${randomY}px`;
+    });
+
+    // Acción cuando se da click en "Sí"
+    yesBtn.addEventListener('click', () => {
+      message.style.display = 'block';
+      message.textContent = "Sabia que es lo que querias, supongo que desde hace tiempo... 😢";
+      yesBtn.style.backgroundColor = "#45a049";
+      yesBtn.disabled = true;
+      noBtn.disabled = true;
+    });
+
+    // Acción cuando se da click en "No"
+    noBtn.addEventListener('click', () => {
+      message.style.display = 'block';
+      message.textContent = "¡¿De verdad?! 😢";
+      noBtn.style.backgroundColor = "#e53935";
+      yesBtn.disabled = true;
+      noBtn.disabled = true;
+    });
+  </script>
+</body>
+</html>
